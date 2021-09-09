@@ -25,7 +25,7 @@ def decode(key, string):
 
 
 if __name__ == '__main__':
-    import sys, getpass
+    import sys, getpass, os
 
     f = encode if sys.argv[1:] and sys.argv[1] == '-e' else decode
-    print(f(getpass.getpass(), '\n'.join([i for i in sys.stdin])))
+    print(f(os.getenv('BLOCK_WEBLIST_PASS') or getpass.getpass(), '\n'.join([i for i in sys.stdin])))
